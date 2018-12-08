@@ -11,11 +11,12 @@ vec3 color(const ray& r, hitable *world, int depth) {
     {
         ray scattered;
         vec3 attenuation;
-        if (depth < 50 && rec.mat_ptr->scatter(r, rec, attenuation, scattered))
+        if(depth < 50 && rec.mat_ptr->scatter(r, rec, attenuation, scattered))
         {
             return attenuation*color(scattered, world, depth+ 1);
         }
-        else {
+        else 
+        {
             return vec3(0,0,0);
         }
     }
